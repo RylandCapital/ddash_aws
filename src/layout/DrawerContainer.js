@@ -31,7 +31,7 @@ class DrawerRouterContainer extends React.Component {
     }
 
     onSelect = (e) => {
-        this.setState({selectedId: e.itemIndex, expanded: true});
+        this.setState({selectedId: e.itemIndex, expanded: false});
         this.props.history.push(e.itemTarget.props.route);
     }
 
