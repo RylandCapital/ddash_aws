@@ -11,7 +11,7 @@ function getLanguageFromURL() {
 
 export class TVChartContainer extends React.PureComponent {
 	static defaultProps = {
-		symbol: 'VIX_VXV',
+		symbol: '_VIX/VXV',
 		interval: 'D',
 		containerId: 'tv_chart_container',
 		datafeed: Datafeed,
@@ -19,10 +19,11 @@ export class TVChartContainer extends React.PureComponent {
 		chartsStorageUrl: 'http://ec2-18-222-179-255.us-east-2.compute.amazonaws.com',
 		chartsStorageApiVersion: '1.1',
 		clientId: 'Option-i',
-		userId: 'RylandCapital',
+		userId: 'RylandCapital', 
 		fullscreen: false,
 		autosize: true,
 		studiesOverrides: {},
+		load_last_chart: true
 	};
 
 	tvWidget = null;
@@ -30,8 +31,6 @@ export class TVChartContainer extends React.PureComponent {
 	componentDidMount() {
 		const widgetOptions = {
 			symbol: this.props.symbol,
-			// BEWARE: no trailing slash is expected in feed URL
-			/*datafeed: new window.Datafeeds.UDFCompatibleDatafeed(this.props.datafeedUrl),*/
 			datafeed: this.props.datafeed,
 			interval: this.props.interval,
 			container_id: this.props.containerId,
@@ -45,13 +44,25 @@ export class TVChartContainer extends React.PureComponent {
 			user_id: this.props.userId,
 			fullscreen: this.props.fullscreen,
 			autosize: this.props.autosize,
-			studies_overrides: this.props.studiesOverrides,
+			load_last_chart: this.props.load_last_chart
 		};
 
 		const tvWidget = new widget(widgetOptions);
 		this.tvWidget = tvWidget;
 
 		tvWidget.onChartReady(() => {
+
+			/*tvWidget.getSavedCharts(function(data) {
+				tvWidget.loadChartFromServer(data[0])
+				console.log("Saved Charts:", data);	
+			});*/
+
+			tvWidget.subscribe('onAutoSaveNeeded', function() {
+				tvWidget.saveChartToServer(function(data) {
+					console.log("Got chart save");
+				});
+			});
+
 			tvWidget.headerReady().then(() => {
 				const button = tvWidget.createButton();
 				button.setAttribute('title', 'Click to show a notification popup');
@@ -65,6 +76,7 @@ export class TVChartContainer extends React.PureComponent {
 				}));
 
 				button.innerHTML = 'Check API';
+				
 			});
 		});
 	}

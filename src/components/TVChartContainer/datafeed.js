@@ -1,36 +1,15 @@
+import { dyvolsheet } from '../../data/dyvolsheet.js';
+
+
+const dvol = dyvolsheet
 
 const configurationData = {
     supported_resolutions: ['1D'],
 }
-
-function Get(yourUrl){
-    var Httpreq = new XMLHttpRequest(); // a new request
-    Httpreq.open("GET",yourUrl,false);
-    Httpreq.send(null);
-    return Httpreq.responseText;          
-  }
-
-var positions = JSON.parse(Get('http://18.216.242.3/dyvolmaster'));
-console.log(Array(positions))
-
-positions.forEach((item) => {
-    item.index = new Date(item.index)
-    item.index.setMinutes(0)
-    item.index.setHours(0)
-    item.index.setSeconds(0)
-    item.VIX_VXV = Number(Number(item['_VIX/VXV_PCTTILE']).toFixed(3))
-    item.VIX_VXV_PCT = Number(Number(item['VIX/VXV_PCTTILE']).toFixed(3))
-    item.FIVE_DAY_CB_PCT = Number(Number(item['_5D_CB_PCTTILE']).toFixed(3))
-    item.FIVE_DAY_CB = Number(Number(item['_5D_AVG_CB']).toFixed(3))
-    item.CB_POINTS = Number(Number(item['_CB_POINTS']).toFixed(3))
-    item.CB_POINTS_PCT= Number(Number(item['_CB_POINTS_PCTTILE']).toFixed(3))
-    item.time = item.index.getTime()/1000
-  });
-
  
 export async function makeApiRequest() {
     try {
-        return positions;
+        return dvol;
     } catch(error) {
         throw new Error(`request error: ${error.status}`);
     }
@@ -39,7 +18,7 @@ export async function makeApiRequest() {
 async function getAllSymbols() {
 
             let allSymbols = [];
-            let products = Object.keys(positions[0])
+            let products = Object.keys(dvol[0])
             products.forEach(ts => {
                 allSymbols = [...allSymbols, {
                     description: ts,
