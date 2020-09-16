@@ -36,11 +36,6 @@ const tscols = getColdefs(36,57)
 const rscols = getColdefs(58,80)
 const fvcols = getColdefs(81,101)
 
-console.log(Object.keys(dyvolsheet[0]))
-
-
-
-
 class ContractHistoryData extends Component {
     constructor(props) {
         super(props);
