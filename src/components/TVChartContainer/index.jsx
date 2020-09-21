@@ -2,6 +2,7 @@ import * as React from 'react';
 import './index.css';
 import { widget } from '../../charting_library/charting_library.min';
 import Datafeed from './datafeed.js';
+import { indicator } from './indicator_template.js';
 
 function getLanguageFromURL() {
 	const regex = new RegExp('[\\?&]lang=([^&#]*)');
@@ -23,7 +24,7 @@ export class TVChartContainer extends React.PureComponent {
 		fullscreen: false,
 		autosize: true,
 		studiesOverrides: {},
-		load_last_chart: true
+		load_last_chart: true,
 	};
 
 	tvWidget = null;
@@ -44,14 +45,15 @@ export class TVChartContainer extends React.PureComponent {
 			user_id: this.props.userId,
 			fullscreen: this.props.fullscreen,
 			autosize: this.props.autosize,
-			load_last_chart: this.props.load_last_chart
+			load_last_chart: this.props.load_last_chart,
+			custom_indicators_getter: indicator
 		};
 
 		const tvWidget = new widget(widgetOptions);
 		this.tvWidget = tvWidget;
 
 		tvWidget.onChartReady(() => {
-
+			///tvWidget.chart().createStudy('Equity', false, false)
 			/*tvWidget.getSavedCharts(function(data) {
 				tvWidget.loadChartFromServer(data[0])
 				console.log("Saved Charts:", data);	
