@@ -12,7 +12,9 @@ const user = {
 };
 
 const items =[
-  { text: "Signals", icon: 'k-i-inbox', children: null, route: '/' },
+  { text: "Login", icon: 'k-i-edit', children: null, route: '/' },
+  { text: "Register", icon: 'k-i-edit', children: null, route: '/register' },
+  { text: "Signals", icon: 'k-i-inbox', children: null, route: '/signals' },
   { text: "Contract History", icon: 'k-i-bell', children: null, route: '/contract_history' },
   { text: "Price Delta", icon: 'k-i-calendar', children: null, route: '/price_delta'},
   { text: "Term Structure", icon: 'k-i-hyperlink-email', children: null, route: '/term_structure' },
@@ -37,6 +39,7 @@ class DrawerRouterContainer extends React.Component {
 
     setSelectedItem = (pathName) => {
         let currentPath = items.find(item => item.route === pathName);
+        console.log(pathName)
         if (currentPath.text) {
             return currentPath.text;
         }
@@ -51,6 +54,7 @@ class DrawerRouterContainer extends React.Component {
     render() {
         let selected = this.setSelectedItem(this.props.location.pathname);
         return (
+          
         <div>
              <div className="header">
             <h1>
@@ -58,8 +62,8 @@ class DrawerRouterContainer extends React.Component {
                 <Button icon="menu" look="flat" onClick={this.handleClick} />
                 <span className="title">
                   DynamicVol
-                  <span className="divider">| Market GPS</span>
-                  <span className="fund"></span>
+                  <span >|</span>
+                  <span className="fund">MarketGPS</span>
                 </span>
               </span>
               <img alt={user.name} src={user.img} />

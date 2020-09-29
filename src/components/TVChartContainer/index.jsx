@@ -3,12 +3,34 @@ import './index.css';
 import { widget } from '../../charting_library/charting_library.min';
 import Datafeed from './datafeed.js';
 import { indicator } from './indicator_template.js';
+import { setCurrentUser } from "../../actions/authActions";
+import store from "../../store";
+import jwt_decode from "jwt-decode";
+
 
 function getLanguageFromURL() {
 	const regex = new RegExp('[\\?&]lang=([^&#]*)');
 	const results = regex.exec(window.location.search);
 	return results === null ? null : decodeURIComponent(results[1].replace(/\+/g, ' '));
 }
+
+function test() {
+	
+	if (localStorage.jwtToken) {
+		// Set auth token header auth
+		const token = localStorage.jwtToken;
+		// Decode token and get user info and exp
+		const decoded = jwt_decode(token);
+		// Set user and isAuthenticated
+		
+		const currentloggeduser = store.dispatch(setCurrentUser(decoded));
+		
+		console.log(store.dispatch(setCurrentUser(decoded)))
+	    // Check for expired token
+	    return currentloggeduser	
+}
+	  }
+	
 
 export class TVChartContainer extends React.PureComponent {
 	static defaultProps = {
@@ -20,12 +42,13 @@ export class TVChartContainer extends React.PureComponent {
 		chartsStorageUrl: 'http://ec2-18-222-179-255.us-east-2.compute.amazonaws.com',
 		chartsStorageApiVersion: '1.1',
 		clientId: 'Option-i',
-		userId: 'RylandCapital', 
+		userId: 'RylandCapital'.concat(test().payload.name), 
 		fullscreen: false,
 		autosize: true,
 		studiesOverrides: {},
 		load_last_chart: true,
 	};
+	
 
 	tvWidget = null;
 
