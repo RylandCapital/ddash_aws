@@ -11,7 +11,7 @@ import {
 // Register User
 export const registerUser = (userData, history) => dispatch => {
   axios
-    .post("http://localhost:5000/users/register/", userData)
+    .post("http://ec2-18-216-242-3.us-east-2.compute.amazonaws.com/users/register/", userData)
     .then(res => history.push("/")) // re-direct to login on successful register
     .catch(err =>
       dispatch({
@@ -23,7 +23,7 @@ export const registerUser = (userData, history) => dispatch => {
 // Login - get user token
 export const loginUser = userData => dispatch => {
   axios
-    .post("http://localhost:5000/users/login/", userData)
+    .post("http://ec2-18-216-242-3.us-east-2.compute.amazonaws.com/users/login/", userData)
     .then(res => {
       // Save to localStorage
 // Set token to localStorage
