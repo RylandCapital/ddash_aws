@@ -15,7 +15,7 @@ function getLanguageFromURL() {
 }
 
 function test() {
-	
+
 	if (localStorage.jwtToken) {
 		// Set auth token header auth
 		const token = localStorage.jwtToken;
@@ -27,8 +27,12 @@ function test() {
 		
 		console.log(store.dispatch(setCurrentUser(decoded)))
 	    // Check for expired token
-	    return currentloggeduser	
+	    return currentloggeduser.payload.name
+} else {
+
+	return ""
 }
+
 	  }
 	
 
@@ -42,7 +46,7 @@ export class TVChartContainer extends React.PureComponent {
 		chartsStorageUrl: 'http://ec2-18-222-179-255.us-east-2.compute.amazonaws.com',
 		chartsStorageApiVersion: '1.1',
 		clientId: 'Option-i',
-		userId: 'RylandCapital'.concat(test().payload.name), 
+		userId: 'RylandCapital'.concat(test()),
 		fullscreen: false,
 		autosize: true,
 		studiesOverrides: {},
