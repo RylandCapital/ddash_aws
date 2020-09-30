@@ -10,7 +10,8 @@ export default function userDb() {
 		const decoded = jwt_decode(token);
 		console.log(decoded)
 	    // Check for expired token
-	    return decoded.name
+        return decoded.id
+        
 } else {
 
 	return ""
