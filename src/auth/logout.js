@@ -1,5 +1,4 @@
 import React, { Component } from "react";
-import { Link } from "react-router-dom";
 import setAuthToken from "../utils/setAuthToken";
 import {
     SET_CURRENT_USER,
@@ -43,20 +42,11 @@ onSubmit = e => {
 
 render() {
 return (
-      <div className="container">
-        <div style={{ marginTop: "4rem" }} className="row">
-          <div className="col s8 offset-s2">
-            <Link to="/" className="btn-flat waves-effect">
-              <i className="material-icons left">keyboard_backspace</i> Back to
-              home
-            </Link>
-            <div className="col s12" style={{ paddingLeft: "11.250px" }}>
-              <h4>
-                <b>Logout </b> below
-              </h4>
-            </div>
-            <form Validate onSubmit={this.onSubmit}>
-              <div className="col s12" style={{ paddingLeft: "11.250px" }}>
+    
+        <div style={{ marginTop: "0vh", marginLeft: '1rem'}}>
+          <div>
+            <form noValidate onSubmit={this.onSubmit}>
+              <div>
                 <button
                   style={{
                     width: "150px",
@@ -73,7 +63,7 @@ return (
             </form>
           </div>
         </div>
-      </div>
+      
     );
   }
 }

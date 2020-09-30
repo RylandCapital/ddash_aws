@@ -69,8 +69,9 @@ class DrawerRouterContainer extends React.Component {
               </span>
               <img alt={user.name} src={user.img} />
             </h1>
+          
           </div>
-            <Drawer
+            <Drawer 
                 expanded ={this.state.expanded}
                 items={items.map(
                 (item) => ({ ...item, selected: item.text === selected }))}

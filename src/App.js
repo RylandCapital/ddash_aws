@@ -46,8 +46,6 @@ if (localStorage.jwtToken) {
     window.location.href = "./";
   }
 }
-
-
 function App() {
   return (
     <Provider store={store}>
@@ -73,3 +71,5 @@ function App() {
 }
 
 export default App;
+
+
