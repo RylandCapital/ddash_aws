@@ -12,14 +12,15 @@ const user = {
 };
 
 const items =[
-  { text: "Login", icon: 'k-i-edit', children: null, route: '/' },
-  { text: "Register", icon: 'k-i-edit', children: null, route: '/register' },
   { text: "Signals", icon: 'k-i-inbox', children: null, route: '/signals' },
   { text: "Contract History", icon: 'k-i-bell', children: null, route: '/contract_history' },
   { text: "Price Delta", icon: 'k-i-calendar', children: null, route: '/price_delta'},
   { text: "Term Structure", icon: 'k-i-hyperlink-email', children: null, route: '/term_structure' },
   { text: "Risk Spreads", icon: 'k-i-star-outline', children: null, route: '/risk_spreads' },
   { text: "Fair Value", icon: 'k-i-globe', children: null, route: '/fair_value' },
+  { text: "Login", icon: 'k-i-edit', children: null, route: '/' },
+  { text: "Logout", icon: 'k-i-edit', children: null, route: '/logout' },
+  { text: "Register", icon: 'k-i-edit', children: null, route: '/register' },
 ];
 
 class DrawerRouterContainer extends React.Component {
