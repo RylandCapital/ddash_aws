@@ -12,6 +12,7 @@ import Dashboardpd from "./Dashboardpd";
 import Dashboardrs from "./Dashboardrs";
 import Dashboardts from "./Dashboardts";
 import Dashboardfv from "./Dashboardfv";
+import Dashboardcurves from "./Dashboardcurves";
 
 import { HashRouter, Switch, Route} from 'react-router-dom';
 
@@ -59,6 +60,7 @@ function App() {
                 <PrivateRoute exact={true} path='/term_structure' component={Dashboardts} />
                 <PrivateRoute exact={true} path='/risk_spreads' component={Dashboardrs} />
                 <PrivateRoute exact={true} path='/fair_value' component={Dashboardfv} />
+                <PrivateRoute exact={true} path='/vol_curves' component={Dashboardcurves} />
                 <Route exact path="/" component={Login} />
                 <PrivateRoute exact path="/logout" component={Logout} />
                 <Route exact path="/register" component={Register} />

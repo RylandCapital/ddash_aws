@@ -1,7 +1,7 @@
-import { dyvolsheet } from '../../data/dyvolsheet.js';
+import { curves } from '../../data/curvesdata.js';
 
 
-const dvol = dyvolsheet
+const dvol = curves
 
 const configurationData = {
     supported_resolutions: ['1D'],

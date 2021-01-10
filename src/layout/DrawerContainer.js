@@ -18,6 +18,7 @@ const items =[
   { text: "Term Structure", icon: 'k-i-hyperlink-email', children: null, route: '/term_structure' },
   { text: "Risk Spreads", icon: 'k-i-star-outline', children: null, route: '/risk_spreads' },
   { text: "Fair Value", icon: 'k-i-globe', children: null, route: '/fair_value' },
+  { text: "Volatility Curves", icon: 'k-i-globe', children: null, route: '/vol_curves' },
   { text: "Login", icon: 'k-i-edit', children: null, route: '/' },
   { text: "Logout", icon: 'k-i-edit', children: null, route: '/logout' },
   { text: "Register", icon: 'k-i-edit', children: null, route: '/register' },
